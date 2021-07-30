@@ -27,13 +27,13 @@ var pJS = function(tag_id, params) {
                 }
             },
             color: {
-                value: '#F39200',
+                value: '#fff'
             },
             shape: {
-                type: 'circle',
+                type: 'image',
                 stroke: {
                     width: 0,
-                    color: '#F39200',
+                    color: '#ff0000'
                 },
                 polygon: {
                     nb_sides: 5
@@ -67,7 +67,7 @@ var pJS = function(tag_id, params) {
             line_linked: {
                 enable: true,
                 distance: 100,
-                color: '#F39200',
+                color: '#fff',
                 opacity: 1,
                 width: 1
             },
@@ -374,7 +374,8 @@ var pJS = function(tag_id, params) {
             this.shape = shape_type;
         }
 
-        if (this.shape == 'image') {
+        var substring = this.shape.substring(0, 5);
+        if (substring == 'image') {
             var sh = pJS.particles.shape;
             this.img = {
                 src: sh.image.src,
@@ -388,15 +389,22 @@ var pJS = function(tag_id, params) {
                 }
             }
         }
-
-
-
     };
 
 
     pJS.fn.particle.prototype.draw = function() {
 
         var p = this;
+
+        function draw() {
+            pJS.canvas.ctx.drawImage(
+                img_obj,
+                p.x - radius,
+                p.y - radius,
+                radius * 2,
+                radius * 2 / p.img.ratio
+            );
+        }
 
         if (p.radius_bubble != undefined) {
             var radius = p.radius_bubble;
@@ -455,17 +463,31 @@ var pJS = function(tag_id, params) {
                 );
                 break;
 
-            case 'image':
+                // case 'image':
 
-                function draw() {
-                    pJS.canvas.ctx.drawImage(
-                        img_obj,
-                        p.x - radius,
-                        p.y - radius,
-                        radius * 2,
-                        radius * 2 / p.img.ratio
-                    );
-                }
+                //   function draw(){
+                //     pJS.canvas.ctx.drawImage(
+                //       img_obj,
+                //       p.x-radius,
+                //       p.y-radius,
+                //       radius*2,
+                //       radius*2 / p.img.ratio
+                //     );
+                //   }
+
+                //   if(pJS.tmp.img_type == 'svg'){
+                //     var img_obj = p.img.obj;
+                //   }else{
+                //     var img_obj = pJS.tmp.img_obj;
+                //   }
+
+                //   if(img_obj){
+                //     draw();
+                //   }
+
+                // break;
+
+            case 'image':
 
                 if (pJS.tmp.img_type == 'svg') {
                     var img_obj = p.img.obj;
@@ -478,6 +500,123 @@ var pJS = function(tag_id, params) {
                 }
 
                 break;
+
+            case 'image2':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'illustration-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image3':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'arts-plastiques-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image4':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'audiovisuelle-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image5':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'dev-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image6':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'bd-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image7':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'formations-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
+
+                break;
+
+            case 'image8':
+
+                if (pJS.tmp.img_type == 'svg') {
+                    var img_obj = p.img.obj;
+                } else {
+                    var img_obj = pJS.tmp.img_obj;
+                }
+                var element = document.createElement('img');
+                element.src = 'photographie-2.png';
+                img_obj = element;
+
+                if (img_obj) {
+                    draw();
+                }
 
         }
 
